@@ -1,10 +1,13 @@
 package org.alexandre.calculadorajava;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.alexandre.calculadorajava.controller.MainController;
 
@@ -35,6 +38,13 @@ public class App extends Application {
                     .getResourceAsStream("/org/alexandre/calculadorajava/icons/MainLogo.png")));
             primaryStage.setTitle("Calculadora - Java");        //Definindo o titulo da janela
             primaryStage.show();                                //Mostrando a janela
+
+            scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    mainController.keyEvent(event);
+                }
+            });
         } catch(Exception e) {
 
             System.out.println("Erro - 01");  //TO - DO

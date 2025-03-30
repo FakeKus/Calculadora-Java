@@ -2,6 +2,7 @@ package org.alexandre.calculadorajava.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,7 +10,15 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 
-public class MainController {
+import org.alexandre.calculadorajava.forms.Operations;
+
+public class MainController extends Operations {
+
+    private double num01;
+    private double num02;
+    private double result;
+    private String operation;
+    private boolean clean;
 
     @FXML
     private ResourceBundle resources;
@@ -94,113 +103,166 @@ public class MainController {
 
     @FXML
     void eventButton00(ActionEvent event) {
-
+        printNum("0");
     }
 
     @FXML
     void eventButton01(ActionEvent event) {
-
+        printNum("1");
     }
 
     @FXML
     void eventButton02(ActionEvent event) {
-
+        printNum("2");
     }
 
     @FXML
     void eventButton03(ActionEvent event) {
-
+        printNum("3");
     }
 
     @FXML
     void eventButton04(ActionEvent event) {
-
+        printNum("4");
     }
 
     @FXML
     void eventButton05(ActionEvent event) {
-
+        printNum("5");
     }
 
     @FXML
     void eventButton06(ActionEvent event) {
-
+        printNum("6");
     }
 
     @FXML
     void eventButton07(ActionEvent event) {
-
+        printNum("7");
     }
 
     @FXML
     void eventButton08(ActionEvent event) {
-
+        printNum("8");
     }
 
     @FXML
     void eventButton09(ActionEvent event) {
-
+        printNum("9");
     }
 
     @FXML
     void eventButtonAdd(ActionEvent event) {
-
+        choiceOperation("ADD");
     }
 
     @FXML
     void eventButtonDel(ActionEvent event) {
-
+        clearText();
     }
 
     @FXML
     void eventButtonDiv(ActionEvent event) {
-
+        choiceOperation("DIVIDE");
     }
 
     @FXML
     void eventButtonMult(ActionEvent event) {
-
+        choiceOperation("MULTIPLY");
     }
 
     @FXML
     void eventButtonPerc(ActionEvent event) {
-
+        choiceOperation("PERCENTAGE");
     }
 
     @FXML
     void eventButtonPoint(ActionEvent event) {
-
+        printNum(",");
     }
 
     @FXML
     void eventButtonResult(ActionEvent event) {
-
+        finalResult();
     }
 
     @FXML
     void eventButtonSub(ActionEvent event) {
-
+        choiceOperation("SUBTRACT");
     }
 
-    @FXML
-    void eventKeyboard(KeyEvent event) {
-
-        /**
+    public void keyEvent(KeyEvent event) {
+        /*-----------------------------------------
+         *  Codigos dos números do NumPad
+         *-----------------------------------------
          * NUMPAD1 NUMPAD2 NUMPAD3
          * NUMPAD4 NUMPAD5 NUMPAD6
          * NUMPAD7 NUMPAD8 NUMPAD9
          *         NUMPAD0
-         *  ADD
-         *  SUBTRACT
-         *  MULTIPLY
-         *  DIVIDE
-         *  EQUALS
+         *-----------------------------------------
+         *  Codigo das operações
+         *-----------------------------------------
+         * ADD
+         * SUBTRACT
+         * MULTIPLY
+         * DIVIDE
+         * DECIMAL
+         * EQUALS      /       ENTER
          */
 
         System.out.println(event.getCode());
         String keyboardCode = event.getCode().toString();
 
-
+        switch (keyboardCode) {
+            case "ENTER":
+                this.buttonResult.fire();
+                break;
+            case "ADD":
+                this.buttonAdd.fire();
+                break;
+            case "SUBTRACT":
+                this.buttonSub.fire();
+                break;
+            case "MULTIPLY":
+                this.buttonMult.fire();
+                break;
+            case "DIVIDE":
+                this.buttonDiv.fire();
+                break;
+            case "DECIMAL":
+                this.buttonPoint.fire();
+                break;
+            case "NUMPAD1":
+                this.button01.fire();
+                break;
+            case "NUMPAD2":
+                this.button02.fire();
+                break;
+            case "NUMPAD3":
+                this.button03.fire();
+                break;
+            case "NUMPAD4":
+                this.button04.fire();
+                break;
+            case "NUMPAD5":
+                this.button05.fire();
+                break;
+            case "NUMPAD6":
+                this.button06.fire();
+                break;
+            case "NUMPAD7":
+                this.button07.fire();
+                break;
+            case "NUMPAD8":
+                this.button08.fire();
+                break;
+            case "NUMPAD9":
+                this.button09.fire();
+                break;
+            case "NUMPAD0":
+                this.button00.fire();
+                break;
+        }
     }
 
     @FXML
@@ -246,7 +308,157 @@ public class MainController {
         buttonPerc.setText("");
         imageBtnPerc.setImage(new javafx.scene.image.Image(getClass()
                 .getResourceAsStream("/org/alexandre/calculadorajava/icons/Percentage.png")));*/
+    }
+
+    private void printNum(String num) {
+        if (clean){labelBott.setText(""); clean = !clean;}
+        if (!num.equals(",")) {
+            if ((labelBott.getText().isBlank() || labelBott.getText().isEmpty()) && num.equals("0")){return;}
+            labelBott.setText(labelBott.getText() + num);
+        } else {
+            if (labelBott.getText().contains(",")){return;}
+            if (!(labelBott.getText().isBlank() || labelBott.getText().isEmpty())) {
+                labelBott.setText(labelBott.getText() + ",");
+            } else {
+                labelBott.setText("0,");
+            }
+        }
 
     }
 
+    private void choiceOperation(String op) {
+        if (labelBott.getText().isBlank() || labelBott.getText().isEmpty()){return;}
+        if (labelTop.getText().isBlank() || labelTop.getText().isEmpty()) {
+            num01 = Double.parseDouble(labelBott.getText().replace(",", "."));
+            operation = op;
+
+            switch (op) {
+                case "ADD":
+                    labelTop.setText(labelBott.getText() + " +");
+                    labelBott.setText("");
+                    break;
+                case "SUBTRACT":
+                    labelTop.setText(labelBott.getText() + " -");
+                    labelBott.setText("");
+                    break;
+                case "MULTIPLY":
+                    labelTop.setText(labelBott.getText() + " *");
+                    labelBott.setText("");
+                    break;
+                case "DIVIDE":
+                    labelTop.setText(labelBott.getText() + " /");
+                    labelBott.setText("");
+                    break;
+                case "PERCENTAGE":
+                    labelTop.setText(labelBott.getText() + "% ");
+                    labelBott.setText("");
+                    break;
+            }
+        } else {
+            num02 = Double.parseDouble(labelBott.getText().replace(",", "."));
+            switch (operation) {
+                case "ADD":
+                    result = add(num01, num02);
+                    num01 = result;
+                    operation = op;
+                    break;
+                case "SUBTRACT":
+                    result = sub(num01, num02);
+                    num01 = result;
+                    operation = op;
+                    break;
+                case "MULTIPLY":
+                    result = mult(num01, num02);
+                    num01 = result;
+                    operation = op;
+                    break;
+                case "DIVIDE":
+                    result = div(num01, num02);
+                    num01 = result;
+                    operation = op;
+                    break;
+            }
+            switch (op) {
+                case "ADD":
+                    labelTop.setText(String.valueOf(result).replace(".", ",") + " +");
+                    labelBott.setText("");
+                    break;
+                case "SUBTRACT":
+                    labelTop.setText(String.valueOf(result).replace(".", ",") + " -");
+                    labelBott.setText("");
+                    break;
+                case "MULTIPLY":
+                    labelTop.setText(String.valueOf(result).replace(".", ",") + " *");
+                    labelBott.setText("");
+                    break;
+                case "DIVIDE":
+                    labelTop.setText(String.valueOf(result).replace(".", ",") + " /");
+                    labelBott.setText("");
+                    break;
+                case "PERCENTAGE":
+                    labelTop.setText(String.valueOf(result).replace(".", ",") + "% ");
+                    labelBott.setText("");
+                    break;
+            }
+        }
+    }
+
+    private void clearText() {
+        clean = false;
+        if (labelBott.getText().isBlank() || labelBott.getText().isEmpty()) {
+            num01 = 0;
+            num02 = 0;
+            operation = "";
+
+            labelTop.setText("");
+        } else {
+            labelBott.setText("");
+        }
+    }
+
+    private void finalResult() {
+        if ((labelTop.getText().isBlank() || labelTop.getText().isEmpty())
+                && (labelBott.getText().isBlank() || labelBott.getText().isEmpty())){return;}
+        if ((labelBott.getText().isBlank() || labelBott.getText().isEmpty())
+                && !(labelTop.getText().isBlank() || labelTop.getText().isEmpty())) {
+            clean = true;
+            num01 = 0;
+            num02 = 0;
+            operation = "";
+
+            int auxIndex01 = labelTop.getText().indexOf(" ");
+            int auxIndex02 = labelTop.getText().indexOf("%");
+            labelBott.setText(labelTop.getText().substring(0, Math.min(auxIndex02, auxIndex01)));
+            labelTop.setText("");
+        } else if (!(labelBott.getText().isBlank() || labelBott.getText().isEmpty())
+                && !(labelTop.getText().isBlank() || labelTop.getText().isEmpty())) {
+
+            num02 = Double.parseDouble(labelBott.getText().replace(",", "."));
+            switch (operation) {
+                case "ADD":
+                    result = add(num01, num02);
+                    break;
+                case "SUBTRACT":
+                    result = sub(num01, num02);
+                    break;
+                case "MULTIPLY":
+                    result = mult(num01, num02);
+                    break;
+                case "DIVIDE":
+                    result = div(num01, num02);
+                    break;
+                case "PERCENTAGE":
+                    result = percent(num01, num02);
+                    break;
+            }
+
+            clean = true;
+            num01 = 0;
+            num02 = 0;
+            operation = "";
+
+            labelBott.setText(String.valueOf(result).replace(".", ","));
+            labelTop.setText("");
+        }
+    }
 }
