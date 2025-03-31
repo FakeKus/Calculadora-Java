@@ -1,21 +1,18 @@
 package org.alexandre.calculadorajava;
 
+import java.util.Objects;
+
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.alexandre.calculadorajava.controller.MainController;
 
-import java.io.IOException;
-
 public class App extends Application {
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) {
         try {
 
             //Carregando o arquivo FXML
@@ -27,28 +24,27 @@ public class App extends Application {
             //Criando a cena
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass()
-                    .getResource("/org/alexandre/calculadorajava/styles/MainStyle.css").toExternalForm());
+            //Aplicando a folha de estilo CSS
+            scene.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource("/org/alexandre/calculadorajava/styles/MainStyle.css")).toExternalForm());
 
             //Carregando e definindo algumas configs da cena
             primaryStage.setScene(scene);                       //Definindo a cena
             primaryStage.setResizable(false);                   //Definindo a janela como não redimensionável
                                                                 //Definindo o Icone da janela
-            primaryStage.getIcons().add(new Image(getClass()
-                    .getResourceAsStream("/org/alexandre/calculadorajava/icons/MainLogo.png")));
+            primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass()
+                    .getResourceAsStream("/org/alexandre/calculadorajava/icons/MainLogo.png"))));
             primaryStage.setTitle("Calculadora - Java");        //Definindo o titulo da janela
             primaryStage.show();                                //Mostrando a janela
 
-            scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-                @Override
-                public void handle(KeyEvent event) {
-                    mainController.keyEvent(event);
-                }
-            });
+            //Configurando evento de teclado para ser tratado no controlador
+            scene.setOnKeyPressed(mainController::keyEvent);
         } catch(Exception e) {
 
-            System.out.println("Erro - 01");  //TO - DO
-            e.printStackTrace();
+            //Exibindo uma mensagem de erro genérica
+            System.out.println("Erro - 01: (App.java)");
+            //TODO: Informar o usuário adequadamente
+            //e.printStackTrace(); //TODO: (Comente para evitar poluição no console)
         }
     }
 

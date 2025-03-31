@@ -1,8 +1,5 @@
 package org.alexandre.calculadorajava.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,17 +11,13 @@ import org.alexandre.calculadorajava.forms.Operations;
 
 public class MainController extends Operations {
 
-    private double num01;
-    private double num02;
-    private double result;
-    private String operation;
-    private boolean clean;
+    //Variáveis utilizadas para armazenar os números e o resultado das operações
+    private double num01;       //Primeiro número inserido pelo usuário
+    private double num02;       //Segundo número inserido pelo usuário
+    private double result;      //Resultado da operação aritmética
+    private String operation;   //Tipo de operação a ser realizada (Ex: ADD, SUBTRACT, ...)
+    private boolean clean;      //Flag para indicar se a tela deve ser limpa antes do próximo número.
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button button00;
@@ -101,96 +94,48 @@ public class MainController extends Operations {
     @FXML
     private Label labelTop;
 
+    //Métodos associados a eventos dos botões numéricos
     @FXML
-    void eventButton00(ActionEvent event) {
-        printNum("0");
-    }
+    void eventButton00(ActionEvent event){printNum("0");}
+    @FXML
+    void eventButton01(ActionEvent event){printNum("1");}
+    @FXML
+    void eventButton02(ActionEvent event){printNum("2");}
+    @FXML
+    void eventButton03(ActionEvent event){printNum("3");}
+    @FXML
+    void eventButton04(ActionEvent event){printNum("4");}
+    @FXML
+    void eventButton05(ActionEvent event){printNum("5");}
+    @FXML
+    void eventButton06(ActionEvent event){printNum("6");}
+    @FXML
+    void eventButton07(ActionEvent event){printNum("7");}
+    @FXML
+    void eventButton08(ActionEvent event){printNum("8");}
+    @FXML
+    void eventButton09(ActionEvent event){printNum("9");}
+    @FXML
+    void eventButtonPoint(ActionEvent event){printNum(",");}
+
+    //Métodos associados a eventos de botões de operações matemáticas
+    @FXML
+    void eventButtonAdd(ActionEvent event){choiceOperation("ADD");}
+    @FXML
+    void eventButtonSub(ActionEvent event){choiceOperation("SUBTRACT");}
+    @FXML
+    void eventButtonMult(ActionEvent event){choiceOperation("MULTIPLY");}
+    @FXML
+    void eventButtonDiv(ActionEvent event){choiceOperation("DIVIDE");}
+    @FXML
+    void eventButtonPerc(ActionEvent event){choiceOperation("PERCENTAGE");}
 
     @FXML
-    void eventButton01(ActionEvent event) {
-        printNum("1");
-    }
-
+    void eventButtonDel(ActionEvent event){clearText();}        //Botão para limpar a tela
     @FXML
-    void eventButton02(ActionEvent event) {
-        printNum("2");
-    }
+    void eventButtonResult(ActionEvent event){finalResult();}   //Calcula e exibe o resultado final
 
-    @FXML
-    void eventButton03(ActionEvent event) {
-        printNum("3");
-    }
-
-    @FXML
-    void eventButton04(ActionEvent event) {
-        printNum("4");
-    }
-
-    @FXML
-    void eventButton05(ActionEvent event) {
-        printNum("5");
-    }
-
-    @FXML
-    void eventButton06(ActionEvent event) {
-        printNum("6");
-    }
-
-    @FXML
-    void eventButton07(ActionEvent event) {
-        printNum("7");
-    }
-
-    @FXML
-    void eventButton08(ActionEvent event) {
-        printNum("8");
-    }
-
-    @FXML
-    void eventButton09(ActionEvent event) {
-        printNum("9");
-    }
-
-    @FXML
-    void eventButtonAdd(ActionEvent event) {
-        choiceOperation("ADD");
-    }
-
-    @FXML
-    void eventButtonDel(ActionEvent event) {
-        clearText();
-    }
-
-    @FXML
-    void eventButtonDiv(ActionEvent event) {
-        choiceOperation("DIVIDE");
-    }
-
-    @FXML
-    void eventButtonMult(ActionEvent event) {
-        choiceOperation("MULTIPLY");
-    }
-
-    @FXML
-    void eventButtonPerc(ActionEvent event) {
-        choiceOperation("PERCENTAGE");
-    }
-
-    @FXML
-    void eventButtonPoint(ActionEvent event) {
-        printNum(",");
-    }
-
-    @FXML
-    void eventButtonResult(ActionEvent event) {
-        finalResult();
-    }
-
-    @FXML
-    void eventButtonSub(ActionEvent event) {
-        choiceOperation("SUBTRACT");
-    }
-
+    //Método para lidar com eventos de teclado
     public void keyEvent(KeyEvent event) {
         /*-----------------------------------------
          *  Codigos dos números do NumPad
@@ -293,6 +238,7 @@ public class MainController extends Operations {
         assert labelBott != null : "fx:id=\"labelBott\" was not injected: check your FXML file 'main.fxml'.";
         assert labelTop != null : "fx:id=\"labelTop\" was not injected: check your FXML file 'main.fxml'.";
 
+        //Setando as imagens dos botões
         /*buttonAdd.setText("");
         imageBtnAdd.setImage(new javafx.scene.image.Image(getClass()
                 .getResourceAsStream("/org/alexandre/calculadorajava/icons/Addition.png")));
@@ -310,6 +256,7 @@ public class MainController extends Operations {
                 .getResourceAsStream("/org/alexandre/calculadorajava/icons/Percentage.png")));*/
     }
 
+    //Método que exibe um número na tela
     private void printNum(String num) {
         if (clean){labelBott.setText(""); clean = !clean;}
         if (!num.equals(",")) {
@@ -326,6 +273,7 @@ public class MainController extends Operations {
 
     }
 
+    //Método para definir uma operação matemática a ser executada
     private void choiceOperation(String op) {
         if (labelBott.getText().isBlank() || labelBott.getText().isEmpty()){return;}
         if (labelTop.getText().isBlank() || labelTop.getText().isEmpty()) {
@@ -403,6 +351,7 @@ public class MainController extends Operations {
         }
     }
 
+    //Método para limpar o texto exibido na calculadora e resetar variáveis
     private void clearText() {
         clean = false;
         if (labelBott.getText().isBlank() || labelBott.getText().isEmpty()) {
@@ -416,6 +365,7 @@ public class MainController extends Operations {
         }
     }
 
+    //Método que realiza o cálculo e exibe o resultado
     private void finalResult() {
         if ((labelTop.getText().isBlank() || labelTop.getText().isEmpty())
                 && (labelBott.getText().isBlank() || labelBott.getText().isEmpty())){return;}
@@ -428,6 +378,7 @@ public class MainController extends Operations {
 
             int auxIndex01 = labelTop.getText().indexOf(" ");
             int auxIndex02 = labelTop.getText().indexOf("%");
+            if (auxIndex02 == -1){auxIndex02 = labelTop.getText().length();}
             labelBott.setText(labelTop.getText().substring(0, Math.min(auxIndex02, auxIndex01)));
             labelTop.setText("");
         } else if (!(labelBott.getText().isBlank() || labelBott.getText().isEmpty())

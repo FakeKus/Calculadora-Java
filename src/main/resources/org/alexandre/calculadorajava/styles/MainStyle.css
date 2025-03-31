@@ -1,18 +1,47 @@
+/* Define estilos gerais para a raiz (root) da aplicação */
 .root {
-
+    -fx-background-color: #282C34;          /* Define a cor de fundo */
+    -fx-padding: 20px;                      /* Adiciona espaço interno nas bordas */
+    -fx-border-radius: 15;                  /* Cria bordas arredondadas */
+    -fx-font-family: 'Arial', sans-serif;   /* Define a fonte padrão como Arial ou outra, sans-serif */
 }
+/* Estiliza o visor de texto */
 .textArea {
-    -fx-border-color: black;
-    -fx-border-width: 1;
-    -fx-border-style: solid;
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 10px;
+    -fx-alignment: center;  /* Alinha o conteúdo ao centro */
     -fx-border-radius: 5;
 }
+/* Estilo para label na parte superior */
 .labelTop {
-
+    -fx-text-fill: rgba(40, 44, 52, 0.75);  /* Define uma cor de texto com opacidade */
+    -fx-font-size: 25px;                    /* Tamanho da fonte para o texto */
 }
+/* Estilo para label na parte inferior */
 .labelBott {
-
+    -fx-text-fill: #282C34; /* Define a cor do texto */
+    -fx-font-size: 30px;
 }
-.button {
-
+/* Estilo para botões padrão */
+.btn {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-padding: 15px;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);  /* Adiciona um efeito de sombra ao botão */
+}
+/* Estilo para o botão ao ser passado o mouse */
+.btn:hover {
+    -fx-background-color: #45A049;
+    -fx-cursor: hand;   /* Define o estilo do Mouse como hand */
+}
+/* Estilo definido para o estado pressionado do botão */
+.btn:pressed {
+    -fx-opacity: 0.5;   /* Reduz a opacidade */
+}
+/* Estilo para botões com símbolos */
+.btnSimbol {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;   /* Define o estilo da fonte como negrito */
 }

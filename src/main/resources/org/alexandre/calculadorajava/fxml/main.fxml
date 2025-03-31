@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -8,21 +9,32 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="250.0" styleClass="root" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="250.0" styleClass="root" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane maxHeight="105.0" maxWidth="240.0" minHeight="105.0" minWidth="240.0" prefHeight="105.0" prefWidth="240.0" styleClass="textArea">
+      <AnchorPane maxHeight="105.0" maxWidth="235.0" minHeight="105.0" minWidth="235.0" prefHeight="105.0" prefWidth="235.0" styleClass="textArea">
          <children>
             <Label fx:id="labelTop" alignment="CENTER_RIGHT" maxHeight="50.0" maxWidth="240.0" minHeight="50.0" minWidth="240.0" prefHeight="50.0" prefWidth="240.0" styleClass="labelTop" textAlignment="RIGHT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Label fx:id="labelBott" alignment="CENTER_RIGHT" maxHeight="50.0" maxWidth="240.0" minHeight="50.0" minWidth="240.0" prefHeight="50.0" prefWidth="240.0" styleClass="labelBott" textAlignment="RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
+         <VBox.margin>
+            <Insets bottom="3.0" />
+         </VBox.margin>
       </AnchorPane>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="318.0" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Button fx:id="buttonResult" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="55.0" maxWidth="175.0" minHeight="55.0" minWidth="175.0" mnemonicParsing="false" onAction="#eventButtonResult" prefHeight="55.0" prefWidth="175.0" text="=" />
+            <Button fx:id="buttonResult" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="55.0" maxWidth="175.0" minHeight="55.0" minWidth="175.0" mnemonicParsing="false" onAction="#eventButtonResult" prefHeight="55.0" prefWidth="175.0" text="=">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btnSimbol" />
+               </styleClass></Button>
             <Button fx:id="buttonDiv" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButtonDiv" prefHeight="55.0" prefWidth="55.0" text="/">
                <graphic>
                   <ImageView fx:id="imageBtnDiv" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic></Button>
+               </graphic>
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btnSimbol" />
+               </styleClass></Button>
          </children>
          <opaqueInsets>
             <Insets />
@@ -30,13 +42,17 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="44.0" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Button fx:id="button07" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton07" prefHeight="55.0" prefWidth="55.0" text="7" />
-            <Button fx:id="button08" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="10.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton08" prefHeight="55.0" prefWidth="55.0" text="8" />
-            <Button fx:id="button09" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton09" prefHeight="55.0" prefWidth="55.0" text="9" />
+            <Button fx:id="button07" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton07" prefHeight="55.0" prefWidth="55.0" styleClass="btn" text="7" />
+            <Button fx:id="button08" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="10.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton08" prefHeight="55.0" prefWidth="55.0" styleClass="btn" text="8" />
+            <Button fx:id="button09" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton09" prefHeight="55.0" prefWidth="55.0" styleClass="btn" text="9" />
             <Button fx:id="buttonMult" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButtonMult" prefHeight="55.0" prefWidth="55.0" text="X">
                <graphic>
                   <ImageView fx:id="imageBtnMult" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic></Button>
+               </graphic>
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btnSimbol" />
+               </styleClass></Button>
          </children>
          <opaqueInsets>
             <Insets />
@@ -44,13 +60,17 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="144.0" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Button fx:id="button04" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton04" prefHeight="55.0" prefWidth="55.0" text="4" />
-            <Button fx:id="button05" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="10.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton05" prefHeight="55.0" prefWidth="55.0" text="5" />
-            <Button fx:id="button06" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton06" prefHeight="55.0" prefWidth="55.0" text="6" />
+            <Button fx:id="button04" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton04" prefHeight="55.0" prefWidth="55.0" styleClass="btn" text="4" />
+            <Button fx:id="button05" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="10.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton05" prefHeight="55.0" prefWidth="55.0" styleClass="btn" text="5" />
+            <Button fx:id="button06" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton06" prefHeight="55.0" prefWidth="55.0" styleClass="btn" text="6" />
             <Button fx:id="buttonSub" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButtonSub" prefHeight="55.0" prefWidth="55.0" text="-">
                <graphic>
                   <ImageView fx:id="imageBtnSub" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic></Button>
+               </graphic>
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btnSimbol" />
+               </styleClass></Button>
          </children>
          <opaqueInsets>
             <Insets />
@@ -58,13 +78,17 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="244.0" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Button fx:id="button01" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton01" prefHeight="55.0" prefWidth="55.0" text="1" />
-            <Button fx:id="button02" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="10.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton02" prefHeight="55.0" prefWidth="55.0" text="2" />
-            <Button fx:id="button03" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton03" prefHeight="55.0" prefWidth="55.0" text="3" />
+            <Button fx:id="button01" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton01" prefHeight="55.0" prefWidth="55.0" styleClass="btn" text="1" />
+            <Button fx:id="button02" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="10.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton02" prefHeight="55.0" prefWidth="55.0" styleClass="btn" text="2" />
+            <Button fx:id="button03" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton03" prefHeight="55.0" prefWidth="55.0" styleClass="btn" text="3" />
             <Button fx:id="buttonAdd" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButtonAdd" prefHeight="55.0" prefWidth="55.0" text="+">
                <graphic>
                   <ImageView fx:id="imageBtnAdd" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic></Button>
+               </graphic>
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btnSimbol" />
+               </styleClass></Button>
          </children>
          <opaqueInsets>
             <Insets />
@@ -72,13 +96,25 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="344.0" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Button fx:id="buttonDel" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButtonDel" prefHeight="55.0" prefWidth="55.0" text="C" />
-            <Button fx:id="button00" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="10.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton00" prefHeight="55.0" prefWidth="55.0" text="0" />
-            <Button fx:id="buttonPoint" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButtonPoint" prefHeight="55.0" prefWidth="55.0" text="," />
+            <Button fx:id="buttonDel" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButtonDel" prefHeight="55.0" prefWidth="55.0" text="C">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btnSimbol" />
+               </styleClass></Button>
+            <Button fx:id="button00" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="10.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButton00" prefHeight="55.0" prefWidth="55.0" styleClass="btn" text="0" />
+            <Button fx:id="buttonPoint" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButtonPoint" prefHeight="55.0" prefWidth="55.0" text=",">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btnSimbol" />
+               </styleClass></Button>
             <Button fx:id="buttonPerc" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="62.0" layoutY="10.0" maxHeight="55.0" maxWidth="55.0" minHeight="55.0" minWidth="55.0" mnemonicParsing="false" onAction="#eventButtonPerc" prefHeight="55.0" prefWidth="55.0" text="\%">
                <graphic>
                   <ImageView fx:id="imageBtnPerc" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic></Button>
+               </graphic>
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btnSimbol" />
+               </styleClass></Button>
          </children>
          <opaqueInsets>
             <Insets />
